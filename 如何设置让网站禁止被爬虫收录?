@@ -1,0 +1,27 @@
+robots.txt文件应该放在网站根目录下。
+举例来说，当搜索引擎[1]  访问一个网站时，首先会检查该网站中是否存在robots.txt这个文件，如果robots机器人程序找到这个文件，它就会根据这个文件的内容，来确定它访问权限的范围。
+
+robots.txt文件用法举例：
+例1、禁止所有搜索引擎访问网站的任何部分
+User-agent: *
+Disallow: /
+例2、允许所有的robot访问
+User-agent: *
+Disallow:
+（或者也可以建一个空文件 "/robots.txt" file）
+例3、禁止某个搜索引擎的访问
+User-agent: BadBot
+Disallow: /
+例4、允许某个搜索引擎的访问
+User-agent: Baiduspider
+Disallow:
+User-agent: *
+Disallow: /
+例5、假设某个网站有三个目录对搜索引擎的访问做了限制，可以这么写：
+User-agent: *
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /joe/
+需要注意的是，对每一个目录必须分开声明，而不要写成：“Disallow: /cgi-bin/ /tmp/”。
+User-agent：后的*（通配符） 具有特殊的含义，代表“any robot”，所以在该文件中不能有 “Disallow: /tmp/*” or “Disallow: *.gif ”这样的记录出现。
+另外，robots.txt主要作用是保障网络安全与网站隐私，百度蜘蛛遵循robots.txt协议。通过根目录中创建的纯文本文件robots.txt，网站就可以声明哪些页面不想被百度蜘蛛爬行并收录，每个网站都可以自主控制网站是否愿意被百度蜘蛛收录，或者指定百度蜘蛛只收录指定的内容。当百度蜘蛛访问某个站点时，它会首先检查该站点根目录下是否存在robots.txt，如果该文件不存在，那么爬虫就沿着链接抓取，如果存在，爬虫就会按照该文件中的内容来确定访问的范围。
